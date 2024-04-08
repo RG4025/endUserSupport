@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  tickets: [{ id: 1, text: "Lorem ipsum doller sit", status: 0 }],
+  tickets: [{ id: nanoid(), text: "This Is The First Ticket", status: false }],
 };
 
 export const Slice = createSlice({
@@ -12,7 +12,7 @@ export const Slice = createSlice({
       const ticket = {
         id: nanoid(),
         text: action.payload,
-        status: 0,
+        status: false,
       };
       state.tickets.push(ticket);
     },
@@ -24,8 +24,12 @@ export const Slice = createSlice({
     },
 
     updateStatus: (state, action) => {
-      state.tickets = state.tickets.filter((ticket) => {
-        ticket.id === action.payload.id && (ticket.status = 1);
+      state.tickets = state.tickets.map((ticket) => {
+        if (ticket.id === action.payload) {
+          return { ...ticket, status: true }; // Create a new ticket object with updated status
+        } else {
+          return ticket; // Keep existing ticket for other items
+        }
       });
     },
   },

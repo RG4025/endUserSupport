@@ -2,8 +2,10 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
-function Signup() { 
+import { useNavigate } from "react-router-dom";
 
+function Signup() {
+  const navigate = useNavigate();
   const formRef = useRef();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -21,8 +23,8 @@ function Signup() {
     e.preventDefault();
 
     if (email !== "" && password !== "") {
-      axios.post(url, { "Email": email, "Password": password });
-      alert("Registered Successfully!");
+      axios.post(url, { Email: email, Password: password });
+      alert("Registered Successfully! You can Login Now");
       // formRef.reset();
       const reset = document.getElementById("form");
       reset.reset();
@@ -36,35 +38,36 @@ function Signup() {
       <div className="container text-start col-12 col-md-8 col-lg-6 bg-dark text-light p-3 rounded rounded-2 my-4">
         <h5 className="my-3">Please Fill the form for the Registration</h5>
         <form onSubmit={handleSubmit} ref={formRef} id="form">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">
+          <div className="mb-3">
+            <label for="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               aria-describedby="emailHelp"
               required
               onChange={getEmail}
             />
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">
+          <div className="mb-3">
+            <label for="exampleInputPassword1" className="form-label">
               Password
             </label>
-            <input type="password" class="form-control" required onChange={getPassword} />
+            <input
+              type="password"
+              className="form-control"
+              required
+              onChange={getPassword}
+            />
           </div>
 
           <div className="d-flex justify-content-between align-items-center">
+            <button type="submit" className="btn btn-info w-full">
+              Submit
+            </button>
 
-          <button type="submit" class="btn btn-primary w-full">
-            Submit
-          </button>
-
-          <NavLink hrefLang={Login} to={Login}>
-           Already have account Login Here!
-          </NavLink>
-
+            <NavLink to="/Login" > Login Here</NavLink>
           </div>
         </form>
       </div>

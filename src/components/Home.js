@@ -1,17 +1,18 @@
-import React from 'react'
+import React from "react";
 
 function Home() {
   return (
     <>
-
-        <div className='container text-center my-5'>
-            <h3>
-                Welcome Please Register or login for the further process!!
-            </h3>
+      <section className="mainHome d-flex align-items-start">
+        <div className="container text-center bg-secondary text-light w-full rounded rounded-5 p-3">
+          <h3>
+            Welcome!! <br /> Please try to Register or login for the further
+            process!!
+          </h3>
         </div>
-    
+      </section>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
