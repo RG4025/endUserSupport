@@ -63,7 +63,7 @@ function AdminProfile() {
               <div className="">
                 <input
                   type="text"
-                  className="outline-none border-none p-2 "
+                  className="border-secondary border-1 p-2 form-control"
                   placeholder="Write the Ticket!"
                   value={inputTicket}
                   onChange={setInput}

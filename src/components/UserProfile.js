@@ -82,7 +82,7 @@ function UserProfile({ value }) {
 
       <div className="my-4">
         <div>
-          <p>User Email : {value.Email !== null ? value.Email : ""}</p>
+          <p>Welcome : {value.Email !== null ? value.Email : ""}</p>
         </div>
       </div>
 

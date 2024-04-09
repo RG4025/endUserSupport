@@ -36,7 +36,9 @@ function Signup() {
   return (
     <>
       <div className="container text-start col-12 col-md-8 col-lg-6 bg-dark text-light p-3 rounded rounded-2 my-4">
-        <h5 className="my-3">Please Fill the form for the Registration</h5>
+        <div className="text-center">
+          <h5 className="my-3">Please Fill the form for the Registration</h5>
+        </div>
         <form onSubmit={handleSubmit} ref={formRef} id="form">
           <div className="mb-3">
             <label for="exampleInputEmail1" className="form-label">
@@ -67,7 +69,7 @@ function Signup() {
               Submit
             </button>
 
-            <NavLink to="/Login" > Login Here</NavLink>
+            <NavLink to="/Login"> Login Here</NavLink>
           </div>
         </form>
       </div>

@@ -55,19 +55,20 @@ function Login() {
       } else {
       }
     });
-  } 
+  }
 
-  useEffect(()=>{},[userData,childData,isLoggedIn])
-
+  useEffect(() => {}, [userData, childData, isLoggedIn]);
 
   return (
     <>
-      <div className="container text-start col-12 col-md-8  bg-dark text-light p-3 rounded rounded-2 my-4">
+      <div className="container text-start col-12 col-md-8   bg-dark text-light p-3 rounded rounded-2 my-4">
         <form
           onSubmit={handleLogin}
-          className={isLoggedIn ? "d-none" : "d-block"}
+          className={isLoggedIn ? "d-none" : "d-block col-lg-6 mx-auto"}
         >
-          <h5 className="my-3">User Login</h5>
+          <div className="text-center">
+            <h5 className="my-3">User Login</h5>
+          </div>
           <div className="mb-3">
             <label for="exampleInputEmail1" className="form-label">
               Email address
@@ -91,8 +92,10 @@ function Login() {
           </div>
 
           <div className="d-flex justify-content-between align-items-center">
-            <button type="submit" className="btn btn-primary w-full" 
-            // onClick={handleLogin}
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+              // onClick={handleLogin}
             >
               Submit
             </button>

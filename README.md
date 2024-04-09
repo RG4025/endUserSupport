@@ -9,6 +9,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3- Register user using new `email` id and `unique password`.\
 4- After registration please login with the `same credentials` , note - The used api end user support is slow please check the device is connected with the `strong network`.\
 5- when trying to login if you feel the button is not working please `double click on it`!\
+6- After login you'll be redirected to the user profile cross check Email and logout for the Session invalid.\
+7- User are have access to the tickets to `create`, `resolve`, `delete` and Give the `answers` to the ticket.\
+8- Click to the `Answer Ticket` it will open the answer field and you can Submit your answer by filling the Answer input.\
+9- The ticket will be delated after clicking on `Delete Ticket` button.\
+10- Admin login Credentials - Admin Name - `admin`, Password - `pass123`\
+11- Use the above fields for admin login Admin have access to `create the ticket`, `resolve ticket` and `delete ticket`.\
+12- Admin don't have the access for answer the ticket.
+13- Logout admin after Creating the ticket.
+ 
 ## Available Scripts
 
 In the project directory, you can run:
