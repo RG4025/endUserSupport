@@ -38,10 +38,12 @@ function Login() {
         console.log(err);
         alert("Fill the valid details");
       });
-    const mainUser = userData.filter(
-      (res) => res.Email === email && res.Password === password
-    );
-    console.log(mainUser);
+
+    // const mainUser = userData.filter(
+    //   (res) => res.Email === email && res.Password === password
+    // );
+
+    // console.log(mainUser);
 
     userData.map((res) => {
       if (res.Email === email && res.Password === password) {
@@ -53,14 +55,16 @@ function Login() {
       } else {
       }
     });
-  }
+  } 
+
+  useEffect(()=>{},[userData,childData,isLoggedIn])
 
 
   return (
     <>
       <div className="container text-start col-12 col-md-8  bg-dark text-light p-3 rounded rounded-2 my-4">
         <form
-          // onSubmit={handleLogin}
+          onSubmit={handleLogin}
           className={isLoggedIn ? "d-none" : "d-block"}
         >
           <h5 className="my-3">User Login</h5>
@@ -87,7 +91,9 @@ function Login() {
           </div>
 
           <div className="d-flex justify-content-between align-items-center">
-            <button type="submit" className="btn btn-primary w-full" onClick={handleLogin}>
+            <button type="submit" className="btn btn-primary w-full" 
+            // onClick={handleLogin}
+            >
               Submit
             </button>
             <NavLink to="/Signup">Register Here</NavLink>

@@ -5,7 +5,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Steps/Instructions
 1- First find the node-modules in the project if you don't fint it install the package using `npm i`
-
+2- You'll get the links to `Register User`, `Login`, `Admin Login`, `Home`
+3- Register user using new `email` id and `unique password`.
+4- After registration please login with the `same credentials` , note - The used api end user support is slow please check the device is connected with the `strong network`.
+5- when trying to login if you feel the button is not working please `double click on it`!
 ## Available Scripts
 
 In the project directory, you can run:
