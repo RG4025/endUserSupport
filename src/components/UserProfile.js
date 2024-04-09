@@ -9,7 +9,7 @@ import {
 } from "../Slice/Slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { prepareAutoBatched } from "@reduxjs/toolkit";
+
 function UserProfile({ value }) {
   //   const getUserDetails = useContext(setUserDetails);
   //   console.log(value);
@@ -25,30 +25,30 @@ function UserProfile({ value }) {
     setInputTicket(e.target.value);
   }
 
-  function handleTicket(e) {
-    e.preventDefault();
+  // function handleTicket(e) {
+  //   e.preventDefault();
 
-    if (inputTicket !== "") {
-      dispatch(addTicket(inputTicket));
-      //   alert("Success!");
-      (function main() {
-        showStatus.current.textContent = "Ticket Added Successfully!";
-        setTimeout(() => {
-          showStatus.current.textContent = " ";
-        }, 3000);
-      })();
-    } else {
-      // alert("The Ticket Should not be empty!");
-      (function main() {
-        showStatus.current.textContent = "The Ticket Should not be empty!";
-        setTimeout(() => {
-          showStatus.current.textContent = " ";
-        }, 3000);
-      })();
-    }
+  //   if (inputTicket !== "") {
+  //     dispatch(addTicket(inputTicket));
+  //     //   alert("Success!");
+  //     (function main() {
+  //       showStatus.current.textContent = "Ticket Added Successfully!";
+  //       setTimeout(() => {
+  //         showStatus.current.textContent = " ";
+  //       }, 3000);
+  //     })();
+  //   } else {
+  //     // alert("The Ticket Should not be empty!");
+  //     (function main() {
+  //       showStatus.current.textContent = "The Ticket Should not be empty!";
+  //       setTimeout(() => {
+  //         showStatus.current.textContent = " ";
+  //       }, 3000);
+  //     })();
+  //   }
 
-    setInputTicket("");
-  }
+  //   setInputTicket("");
+  // }
 
   // function hangdleAnswerTicket(e) {
   //   e.preventDefault();
@@ -86,7 +86,7 @@ function UserProfile({ value }) {
         </div>
       </div>
 
-      <div className="text-center">
+      {/* <div className="text-center">
         <span className="fw-bold py-2 text-center my-3">Create Ticket</span>
 
         <form action="" onSubmit={handleTicket} className="my-3">
@@ -108,7 +108,7 @@ function UserProfile({ value }) {
             ref={showStatus}
           ></div>
         </form>
-      </div>
+      </div> */}
       <div className="py-3 row row-cols-1 row-cols-md-2">
         {ticket.map((ticket) => {
           let tId = ticket.id;

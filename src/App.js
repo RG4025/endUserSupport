@@ -6,6 +6,9 @@ import Login from "./components/Login";
 import AdminLogin from "./components/AdminLogin";
 import Home from "./components/Home";
 import AdminProfile from "./components/AdminProfile";
+import TechSupport from "./components/TechSupport";
+import TechProfile from "./components/TechProfile";
+import TechLogin from "./components/TechLogin";
 import { Routes, Route, NavLink } from "react-router-dom";
 
 const navbarLinks = [
@@ -25,13 +28,17 @@ const navbarLinks = [
     name: "Admin Login",
     to: "/AdminLogin",
   },
+  {
+    name: "Tech Support",
+    to: "/TechSupport",
+  },
 ];
 
 function App() {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid col-12 col-lg-6">
+        <div className="container-fluid col-12 col-lg-8">
           <button
             className="navbar-toggler"
             type="button"
@@ -70,6 +77,9 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/AdminLogin" element={<AdminLogin />} />
             <Route path="/AdminProfile" element={<AdminProfile />} />
+            <Route path="/TechSupport" element={<TechSupport />} />
+            <Route path="/TechLogin" element={<TechLogin />} />
+            <Route path="/TechProfile" element={<TechProfile />} />
             
           </Routes>
         </div>
