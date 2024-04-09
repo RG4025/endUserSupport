@@ -138,6 +138,8 @@ function TechProfile() {
                                   answerTicket([ticket.id, inputAnswerTicket])
                                 );
                                 setanswerTicket("");
+                              }else{
+                                alert("Input field should not be empty!")
                               }
                             }}
                           >
