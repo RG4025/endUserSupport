@@ -3,13 +3,14 @@ import React from "react";
 function Home() {
   return (
     <>
-      <section className="mainHome d-flex align-items-start">
-        <div className="container text-center bg-secondary text-light w-full rounded rounded-5 p-3">
+      <section className="">
+        <div className="container col-12 col-lg-8 text-center bg-secondary text-light w-full rounded rounded-2 p-2">
           <h3>
-            Welcome!! <br /> Please try to Register or login for the further
-            process!!
+            Warm greetings for the day!
+            <br />In order to access the user assistance, please attempt to register or log in.
           </h3>
         </div>
+        <section className="mainHome d-flex align-items-start "></section>
       </section>
     </>
   );

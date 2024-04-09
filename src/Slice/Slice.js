@@ -1,7 +1,14 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-
+import { useEffect } from "react";
 const initialState = {
-  tickets: [{ id: nanoid(), text: "This Is The First Ticket", status: false }],
+  tickets: [
+    {
+      id: nanoid(),
+      text: "Please try adding another ticket as you are seeing the default one.",
+      status: false,
+      answer: "",
+    },
+  ],
 };
 
 export const Slice = createSlice({
@@ -13,6 +20,7 @@ export const Slice = createSlice({
         id: nanoid(),
         text: action.payload,
         status: false,
+        answer: "",
       };
       state.tickets.push(ticket);
     },
@@ -32,9 +40,31 @@ export const Slice = createSlice({
         }
       });
     },
+
+    answerTicket: (state, action) => {
+      // const { ticketId, answerText } = action.payload;
+      // console.log(ticketId, answerText);
+      // console.log(action.payload);
+      const ticketId = action.payload[0];
+      const answerText = action.payload[1];
+
+      const ticketIndex = state.tickets.findIndex(
+        (ticket) => ticket.id === ticketId
+      );
+
+      if (ticketIndex !== -1) {
+        state.tickets[ticketIndex] = {
+          ...state.tickets[ticketIndex],
+          answer: answerText,
+        };
+      }
+    },
   },
+  
 });
 
-export const { addTicket, removeTicket, updateStatus } = Slice.actions;
+export const { addTicket, removeTicket, updateStatus, answerTicket } =
+  Slice.actions;
+
 
 export default Slice.reducer;

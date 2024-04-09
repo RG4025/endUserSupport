@@ -1,15 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { setUserDetails } from "./Login";
 import { Link } from "react-router-dom";
-import { addTicket, updateStatus, removeTicket } from "../Slice/Slice";
+import {
+  addTicket,
+  updateStatus,
+  removeTicket,
+  answerTicket,
+} from "../Slice/Slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { prepareAutoBatched } from "@reduxjs/toolkit";
 function UserProfile({ value }) {
   //   const getUserDetails = useContext(setUserDetails);
   //   console.log(value);
 
+  const showStatus = useRef();
   const dispatch = useDispatch();
   const [inputTicket, setInputTicket] = useState("");
+  const [inputAnswerTicket, setanswerTicket] = useState("");
+
+  const [isAnswerOpen, setIsAnswerOpen] = useState(false);
 
   function setInput(e) {
     setInputTicket(e.target.value);
@@ -20,16 +30,40 @@ function UserProfile({ value }) {
 
     if (inputTicket !== "") {
       dispatch(addTicket(inputTicket));
-      alert("Success!");
+      //   alert("Success!");
+      (function main() {
+        showStatus.current.textContent = "Ticket Added Successfully!";
+        setTimeout(() => {
+          showStatus.current.textContent = " ";
+        }, 3000);
+      })();
     } else {
-      alert("The Ticket Should not be empty!");
+      // alert("The Ticket Should not be empty!");
+      (function main() {
+        showStatus.current.textContent = "The Ticket Should not be empty!";
+        setTimeout(() => {
+          showStatus.current.textContent = " ";
+        }, 3000);
+      })();
     }
 
     setInputTicket("");
   }
 
+  // function hangdleAnswerTicket(e) {
+  //   e.preventDefault();
+  //     // preventDefault();
+  //   if (inputAnswerTicket !== "") {
+  //     dispatch(answerTicket(inputAnswerTicket));
+  //     console.log("success");
+  //   } else {
+  //   //   alert("fill the valid field!");
+  //     console.log("error");
+  //   }
+  // }
+
   const ticket = useSelector((state) => state.tickets);
-//   console.log(ticket);
+  //   console.log(ticket);
 
   return (
     <section className="container">
@@ -69,17 +103,63 @@ function UserProfile({ value }) {
               Add Ticket
             </button>
           </div>
+          <div
+            className="py-0 my-4 border border-info border-2"
+            ref={showStatus}
+          ></div>
         </form>
       </div>
       <div className="py-3 row row-cols-1 row-cols-md-2">
         {ticket.map((ticket) => {
+          let tId = ticket.id;
           return (
-            <div className=" py-3">
+            <div className=" py-3" key={ticket.id}>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Ticket</h5>
                   <p className="card-text">{ticket.text}</p>
-                  {/* <p className="card-text">{ticket.id}</p> */}
+                  {ticket.answer !== "" ? (
+                    <div className="">
+                      <p>
+                        <b>Answer :</b> {ticket.answer}
+                      </p>
+                    </div>
+                  ) : (
+                    <div
+                      id={ticket.id}
+                      style={{ display: "none" }}
+                      className="py-2"
+                    >
+                      <form
+                        // onSubmit={hangdleAnswerTicket}
+                        className="d-flex flex-column gap-2"
+                      >
+                        {" "}
+                        <input
+                          type="text"
+                          className="form-control border border-secondary border-1"
+                          placeholder="Write Answer..."
+                          onChange={(e) => setanswerTicket(e.target.value)}
+                        />{" "}
+                        <button
+                          type="submit"
+                          className="btn btn-secondary btn-sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (inputAnswerTicket !== "") {
+                              dispatch(
+                                answerTicket([ticket.id, inputAnswerTicket])
+                              );
+                              setanswerTicket("");
+                            }
+                          }}
+                        >
+                          Add
+                        </button>
+                      </form>
+                    </div>
+                  )}
+
                   <div className="d-flex justify-content-start align-items- gap-2">
                     <div>
                       {ticket.status !== false ? (
@@ -105,6 +185,33 @@ function UserProfile({ value }) {
                         Delete Ticket
                       </button>
                     </div>
+
+                    {ticket.answer ? (
+                      ""
+                    ) : (
+                      <div className="">
+                        <button
+                          className="btn btn-danger btn-sm p-1"
+                          title="Delete the title!"
+                          onClick={() => {
+                            const currTicket = document.getElementById(tId);
+
+                            // console.log(currTicket.id);
+                            if (currTicket.id === ticket.id) {
+                              // setIsAnswerOpen(!isAnswerOpen);
+
+                              if (currTicket.style.display === "none") {
+                                currTicket.style.display = "block"; // Show element
+                              } else {
+                                currTicket.style.display = "none"; // Hide element
+                              }
+                            }
+                          }}
+                        >
+                          Answer Ticket
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

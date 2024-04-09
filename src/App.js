@@ -7,6 +7,7 @@ import AdminLogin from "./components/AdminLogin";
 import Home from "./components/Home";
 import AdminProfile from "./components/AdminProfile";
 import { Routes, Route, NavLink } from "react-router-dom";
+
 const navbarLinks = [
   {
     name: "Home",
@@ -56,11 +57,11 @@ function App() {
             </ul>
           </div>
           <div className="">
-            End User Support
+            <h5>Noitavonne User Support</h5>
           </div>
         </div>
       </nav>
-              
+
       <section className="w-full ">
         <div className="container pt-3">
           <Routes>

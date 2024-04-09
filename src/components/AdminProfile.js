@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { addTicket, updateStatus, removeTicket } from "../Slice/Slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 function AdminProfile() {
   const dispatch = useDispatch();
 
+  const showStatus = useRef();
   const ticket = useSelector((state) => state.tickets);
   const [inputTicket, setInputTicket] = useState("");
 
@@ -18,9 +19,21 @@ function AdminProfile() {
 
     if (inputTicket !== "") {
       dispatch(addTicket(inputTicket));
-      alert("Success!");
+      //   alert("Success!");
+      (function main() {
+        showStatus.current.textContent = "Ticket Added Successfully!";
+        setTimeout(() => {
+          showStatus.current.textContent = " ";
+        }, 3000);
+      })();
     } else {
-      alert("The Ticket Should not be empty!");
+      // alert("The Ticket Should not be empty!");
+      (function main() {
+        showStatus.current.textContent = "The Ticket Should not be empty!!";
+        setTimeout(() => {
+          showStatus.current.textContent = " ";
+        }, 3000);
+      })();
     }
 
     setInputTicket("");
@@ -28,7 +41,7 @@ function AdminProfile() {
 
   return (
     <>
-      <div className="d-flex justify-content-start align-items-center gap-3">
+      <div className="d-flex justify-content-end align-items-center gap-3 my-3">
         <span className="text-dark">
           Welcome : <b>admin</b>{" "}
         </span>
@@ -47,32 +60,39 @@ function AdminProfile() {
 
           <form action="" onSubmit={handleTicket} className="my-3">
             <div className="d-md-flex justify-content-center align-items-center gap-3">
-              <input
-                type="text"
-                className="outline-none border-none p-2"
-                placeholder="Write the Ticket!"
-                value={inputTicket}
-                onChange={setInput}
-              />
-
-              <button
-                type="submit"
-                className="btn btn-primary p-2 my-3 my-md-0"
-              >
-                Add Ticket
-              </button>
+              <div className="">
+                <input
+                  type="text"
+                  className="outline-none border-none p-2 "
+                  placeholder="Write the Ticket!"
+                  value={inputTicket}
+                  onChange={setInput}
+                />
+              </div>
+              <div className="">
+                <button
+                  type="submit"
+                  className="btn btn-primary p-2 my-3 my-md-0"
+                >
+                  Add Ticket
+                </button>
+              </div>
             </div>
+            <div
+              className="py-0 my-4 border border-info border-2"
+              ref={showStatus}
+            ></div>
           </form>
         </div>
         <div className="py-3 text-start mx-auto row row-cols-1 row-cols-md-2 col-12 col-md-8">
           {ticket.map((ticket) => {
             return (
-              <div className=" p-3">
+              <div className=" p-3" key={ticket.id}>
                 <div className="card">
                   <div className="card-body p-3">
                     <h5 className="card-title">Ticket</h5>
                     <p className="card-text">{ticket.text}</p>
-                    {/* <p className="card-text">{ticket.id}</p> */}
+                    <p className="card-text"><b>Answer :</b> {ticket.answer}</p>
                     <div className="d-flex justify-content-start align-items- gap-2">
                       <div>
                         {ticket.status !== false ? (
