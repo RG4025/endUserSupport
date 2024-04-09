@@ -7,6 +7,7 @@ const initialState = {
       text: "Please try adding another ticket as you are seeing the default one.",
       status: false,
       answer: "",
+      documents: [],
     },
   ],
 };
@@ -59,12 +60,26 @@ export const Slice = createSlice({
         };
       }
     },
+
+    addTicketDocument: (state, action) => {
+      const { ticketId, file, fileName, fileType } = action.payload;
+
+      const ticketIndex = state.tickets.findIndex(
+        (ticket) => ticket.id === ticketId
+      );
+
+      if (ticketIndex !== -1) {
+        state.tickets[ticketIndex].documents.push({
+          fileName,
+          file,
+          fileType,
+        });
+      }
+    },
   },
-  
 });
 
 export const { addTicket, removeTicket, updateStatus, answerTicket } =
   Slice.actions;
-
 
 export default Slice.reducer;

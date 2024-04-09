@@ -10,6 +10,7 @@ import TechSupport from "./components/TechSupport";
 import TechProfile from "./components/TechProfile";
 import TechLogin from "./components/TechLogin";
 import { Routes, Route, NavLink } from "react-router-dom";
+// import DocumentTest from "./components/DocumentTest";
 
 const navbarLinks = [
   {
@@ -83,6 +84,7 @@ function App() {
             
           </Routes>
         </div>
+
       </section>
     </>
   );
