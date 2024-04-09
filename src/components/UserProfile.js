@@ -67,15 +67,21 @@ function UserProfile({ value }) {
 
   return (
     <section className="container">
-      <div className="d-flex justify-content-around align-items-center col-12 col-md-6">
-        <div className="">User Profile</div>
+      <div className="d-flex flex-column justify-content-around align-items-center col-12 ">
         <div className="">
-          <button className="btn btn-info btn-sm">
-            {" "}
-            <Link to="/" className="text-dark">
-              Logout
-            </Link>
-          </button>
+          You are viewing the tickets that the admin and tech support have
+          assigned.
+        </div>
+        <div className="d-flex  justify-content-between align-items-center gap-4 my-3">
+          <div className="text-start">User Profile</div>
+          <div className="">
+            <button className="btn btn-info btn-sm">
+              {" "}
+              <Link to="/" className="text-dark">
+                Logout
+              </Link>
+            </button>
+          </div>
         </div>
         {/* <span>{value.Email !== null ? "i did it" : ""}</span> */}
       </div>

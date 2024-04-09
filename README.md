@@ -21,7 +21,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 15- You'll find the tech support login in the below of tech support page,\
 16- Tech Support Credentials - name- `tech` and password - `tech123`.\
 17- Tech Support are able to `add tickets` to the user as well as `delete ticket` and `answer to the ticket`.\
-18 - Flow - First admin or tech support will assing/add ticket to the user after successfully login and user will Answer to the ticket assigned to them.
+18 - Flow - First admin or tech support will assing/add ticket to the user after successfully login and user will Answer to the ticket assigned to them after there successfully registration and Login!
 
 ## Available Scripts
 
