@@ -66,7 +66,7 @@ function TechSupport() {
           </div>
         </div>
 
-        <div className="">
+        <div className="py-3 py-md-5">
           <button className="btn btn-primary btn-md">
             <Link className="text-light" to="/TechLogin">Login To Tech Support</Link>
           </button>
