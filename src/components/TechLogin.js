@@ -88,9 +88,6 @@ function TechLogin() {
         </div>
       </div>
       <div className={istechLoggedin ? "d-block" : "d-none"}>
-        {/* <h6>
-          user has logged in Successfully
-        </h6> */}
         <TechProfile value={techDataChild} />
       </div>
     </>

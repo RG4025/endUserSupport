@@ -34,6 +34,23 @@ function TechSupport() {
   return (
     <>
       <section className="container">
+        <div className="py-3 py-md-5 d-flex justify-content-start align-items-center gap-4">
+          <button className="btn btn-primary btn-md">
+            <Link className="text-light text-decoration-none" to="/TechLogin">
+              Login To Tech Support
+            </Link>
+          </button>
+
+          <button className="btn btn-primary btn-md">
+            <Link
+              className="text-light text-decoration-none"
+              to="/TechRegister"
+            >
+              Register To Tech Support
+            </Link>
+          </button>
+        </div>
+
         <div className="">
           <div className="row row-cols-1 row-cols-md-2">
             {tech.map((res) => {
@@ -66,23 +83,6 @@ function TechSupport() {
               );
             })}
           </div>
-        </div>
-
-        <div className="py-3 py-md-5 d-flex justify-content-start align-items-center gap-4">
-          <button className="btn btn-primary btn-md">
-            <Link className="text-light text-decoration-none" to="/TechLogin">
-              Login To Tech Support
-            </Link>
-          </button>
-
-          <button className="btn btn-primary btn-md">
-            <Link
-              className="text-light text-decoration-none"
-              to="/TechRegister"
-            >
-              Register To Tech Support
-            </Link>
-          </button>
         </div>
       </section>
     </>

@@ -1,4 +1,4 @@
-import React, { useRef, useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import axios from "axios";
 import UserProfile from "./UserProfile";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ const setUserDetails = createContext();
 function Login() {
   const navigate = useNavigate();
 
-  const formRef = useRef();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -38,12 +37,6 @@ function Login() {
         console.log(err);
         alert("Fill the valid details");
       });
-
-    // const mainUser = userData.filter(
-    //   (res) => res.Email === email && res.Password === password
-    // );
-
-    // console.log(mainUser);
 
     userData.map((res) => {
       if (res.Email === email && res.Password === password) {
@@ -92,11 +85,7 @@ function Login() {
           </div>
 
           <div className="d-flex justify-content-between align-items-center">
-            <button
-              type="submit"
-              className="btn btn-primary w-full"
-              // onClick={handleLogin}
-            >
+            <button type="submit" className="btn btn-primary w-full">
               Submit
             </button>
             <NavLink to="/Signup">Register Here</NavLink>

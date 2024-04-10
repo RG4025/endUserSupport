@@ -1,5 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
-import { setUserDetails } from "./Login";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   addTicket,
@@ -19,7 +18,7 @@ function UserProfile({ value }) {
   const [inputTicket, setInputTicket] = useState("");
   const [inputAnswerTicket, setanswerTicket] = useState("");
 
-  const [isAnswerOpen, setIsAnswerOpen] = useState(false);
+  // const [isAnswerOpen, setIsAnswerOpen] = useState(false);
 
   function setInput(e) {
     setInputTicket(e.target.value);
@@ -68,10 +67,6 @@ function UserProfile({ value }) {
   return (
     <section className="container">
       <div className="d-flex flex-column justify-content-around align-items-center col-12 ">
-        {/* <div className="">
-          You are viewing the tickets that the admin and tech support have
-          assigned.
-        </div> */}
         <div className="d-flex  justify-content-between align-items-center gap-4 my-3">
           <div className="text-start">User Profile</div>
           <div className="">
@@ -83,7 +78,6 @@ function UserProfile({ value }) {
             </button>
           </div>
         </div>
-        {/* <span>{value.Email !== null ? "i did it" : ""}</span> */}
       </div>
 
       <div className="my-4">
@@ -122,7 +116,10 @@ function UserProfile({ value }) {
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Ticket</h5>
-                  <p className="card-text"> <b>Your Query :</b> {ticket.text}</p>
+                  <p className="card-text">
+                    {" "}
+                    <b>Your Query :</b> {ticket.text}
+                  </p>
                   {ticket.answer !== "" ? (
                     <div className="">
                       <p>
@@ -131,13 +128,11 @@ function UserProfile({ value }) {
                     </div>
                   ) : (
                     <div className="my-2">
-                      <b>
-                        The tech support will answer you Shortly!
-                      </b>
+                      <b>The tech support will answer you Shortly!</b>
                     </div>
                   )}
 
-                    {/* <div
+                  {/* <div
                       id={ticket.id}
                       style={{ display: "none" }}
                       className="py-2"

@@ -11,7 +11,6 @@ import TechProfile from "./components/TechProfile";
 import TechLogin from "./components/TechLogin";
 import TechRegister from "./components/TechRegister";
 import { Routes, Route, NavLink } from "react-router-dom";
-// import DocumentTest from "./components/DocumentTest";
 
 const navbarLinks = [
   {
@@ -83,11 +82,9 @@ function App() {
             <Route path="/TechLogin" element={<TechLogin />} />
             <Route path="/TechProfile" element={<TechProfile />} />
             <Route path="/TechRegister" element={<TechRegister />} />
-            
           </Routes>
         </div>
 
-        {/* <TechRegister/> */}
 
       </section>
     </>

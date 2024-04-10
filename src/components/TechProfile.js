@@ -10,17 +10,17 @@ import {
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 function TechProfile({ value }) {
-  const showStatus = useRef();
   const dispatch = useDispatch();
-  const [inputTicket, setInputTicket] = useState("");
   const [inputAnswerTicket, setanswerTicket] = useState("");
-
-  const [isAnswerOpen, setIsAnswerOpen] = useState(false);
-
+  
+  
   function setInput(e) {
     setInputTicket(e.target.value);
   }
-
+  
+  // const showStatus = useRef();
+  // const [isAnswerOpen, setIsAnswerOpen] = useState(false);
+  // const [inputTicket, setInputTicket] = useState("");
   // function handleTicket(e) {
   //   e.preventDefault();
 

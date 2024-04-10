@@ -1,11 +1,8 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import Login from "./Login";
-import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const navigate = useNavigate();
   const formRef = useRef();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -25,7 +22,7 @@ function Signup() {
     if (email !== "" && password !== "") {
       axios.post(url, { Email: email, Password: password });
       alert("Registered Successfully! You can Login Now");
-      // formRef.reset();
+
       const reset = document.getElementById("form");
       reset.reset();
     } else {
