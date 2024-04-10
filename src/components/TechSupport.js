@@ -8,7 +8,7 @@ function TechSupport() {
       instruc: {
         1: "Open the specific ticket you want to resolve.",
         2: 'Look for a button or option labeled "Resolve Ticket" or "Close Ticket." Click it.',
-        3: "After click you can;t unresolve the ticket.!",
+        3: "After click you can't unresolve the ticket.!",
       },
     },
     {
@@ -20,11 +20,11 @@ function TechSupport() {
       },
     },
     {
-      name: "3) Add Answer",
+      name: "3) Add Ticket",
       instruc: {
-        1: "Open the specific ticket you want to reply to.",
-        2: "Click to the 'Answer Ticket'",
-        3: "Send your response by filling and clicking to the add button",
+        1: "Write Your ticket in the inout field and click to the Add Ticket the ticket will added!",
+        2: "After Clicking to the logout youll be directed to the home page",
+        3: "Wait for the answer from the tech Support!",
       },
     },
   ];

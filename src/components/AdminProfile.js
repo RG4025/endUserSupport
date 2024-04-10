@@ -1,5 +1,10 @@
 import React, { useState, useRef } from "react";
-import { addTicket, updateStatus, removeTicket } from "../Slice/Slice";
+import {
+  addTicket,
+  updateStatus,
+  removeTicket,
+  assignTicketByAdmin,
+} from "../Slice/Slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -14,30 +19,30 @@ function AdminProfile() {
     setInputTicket(e.target.value);
   }
 
-  function handleTicket(e) {
-    e.preventDefault();
+  // function handleTicket(e) {
+  //   e.preventDefault();
 
-    if (inputTicket !== "") {
-      dispatch(addTicket(inputTicket));
-      //   alert("Success!");
-      (function main() {
-        showStatus.current.textContent = "Ticket Added Successfully!";
-        setTimeout(() => {
-          showStatus.current.textContent = " ";
-        }, 3000);
-      })();
-    } else {
-      // alert("The Ticket Should not be empty!");
-      (function main() {
-        showStatus.current.textContent = "The Ticket Should not be empty!!";
-        setTimeout(() => {
-          showStatus.current.textContent = " ";
-        }, 3000);
-      })();
-    }
+  //   if (inputTicket !== "") {
+  //     dispatch(addTicket(inputTicket));
+  //     //   alert("Success!");
+  //     (function main() {
+  //       showStatus.current.textContent = "Ticket Added Successfully!";
+  //       setTimeout(() => {
+  //         showStatus.current.textContent = " ";
+  //       }, 3000);
+  //     })();
+  //   } else {
+  //     // alert("The Ticket Should not be empty!");
+  //     (function main() {
+  //       showStatus.current.textContent = "The Ticket Should not be empty!!";
+  //       setTimeout(() => {
+  //         showStatus.current.textContent = " ";
+  //       }, 3000);
+  //     })();
+  //   }
 
-    setInputTicket("");
-  }
+  //   setInputTicket("");
+  // }
 
   return (
     <>
@@ -55,7 +60,7 @@ function AdminProfile() {
         </span>
       </div>
       <section className="container">
-        <div className="text-center">
+        {/* <div className="text-center">
           <span className="fw-bold py-2 text-center my-3">Create Ticket</span>
 
           <form action="" onSubmit={handleTicket} className="my-3">
@@ -83,7 +88,7 @@ function AdminProfile() {
               ref={showStatus}
             ></div>
           </form>
-        </div>
+        </div> */}
         <div className="py-3 text-start mx-auto row row-cols-1 row-cols-md-2 col-12 col-md-8">
           {ticket.map((ticket) => {
             return (
@@ -91,8 +96,18 @@ function AdminProfile() {
                 <div className="card">
                   <div className="card-body p-3">
                     <h5 className="card-title">Ticket</h5>
-                    <p className="card-text">{ticket.text}</p>
-                    <p className="card-text"><b>Answer :</b> {ticket.answer}</p>
+                    <p className="card-text"> <b>User Query : </b> {ticket.text}</p>
+                    <p className="card-text">
+                      {ticket.answer !== "" ? (
+                        <p>
+                          <b>Answer :</b> {ticket.answer}
+                        </p>
+                      ) : ticket.assignTicketByAdmin !== false ? (
+                        <b>The ticket are assigned wait for the answer!!</b>
+                      ) : (
+                        <b>Assign Ticket to the tech support!</b>
+                      )}
+                    </p>
                     <div className="d-flex justify-content-start align-items- gap-2">
                       <div>
                         {ticket.status !== false ? (
@@ -117,6 +132,27 @@ function AdminProfile() {
                         >
                           Delete Ticket
                         </button>
+                      </div>
+                      <div className="">
+                        {ticket.assignTicketByAdmin !== false ? (
+                          <div>
+                            <button className="btn btn-success btn-sm">
+                              Assigned
+                            </button>
+                          </div>
+                        ) : (
+                          <div>
+                            <button
+                              className="btn btn-danger btn-sm p-1"
+                              title="Delete the title!"
+                              onClick={() =>
+                                dispatch(assignTicketByAdmin(ticket.id))
+                              }
+                            >
+                              Assign Ticket
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

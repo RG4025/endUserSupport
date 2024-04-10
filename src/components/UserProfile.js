@@ -25,42 +25,42 @@ function UserProfile({ value }) {
     setInputTicket(e.target.value);
   }
 
-  // function handleTicket(e) {
-  //   e.preventDefault();
+  function handleTicket(e) {
+    e.preventDefault();
 
-  //   if (inputTicket !== "") {
-  //     dispatch(addTicket(inputTicket));
-  //     //   alert("Success!");
-  //     (function main() {
-  //       showStatus.current.textContent = "Ticket Added Successfully!";
-  //       setTimeout(() => {
-  //         showStatus.current.textContent = " ";
-  //       }, 3000);
-  //     })();
-  //   } else {
-  //     // alert("The Ticket Should not be empty!");
-  //     (function main() {
-  //       showStatus.current.textContent = "The Ticket Should not be empty!";
-  //       setTimeout(() => {
-  //         showStatus.current.textContent = " ";
-  //       }, 3000);
-  //     })();
-  //   }
+    if (inputTicket !== "") {
+      dispatch(addTicket(inputTicket));
+      //   alert("Success!");
+      (function main() {
+        showStatus.current.textContent = "Ticket Added Successfully!";
+        setTimeout(() => {
+          showStatus.current.textContent = " ";
+        }, 3000);
+      })();
+    } else {
+      // alert("The Ticket Should not be empty!");
+      (function main() {
+        showStatus.current.textContent = "The Ticket Should not be empty!";
+        setTimeout(() => {
+          showStatus.current.textContent = " ";
+        }, 3000);
+      })();
+    }
 
-  //   setInputTicket("");
-  // }
+    setInputTicket("");
+  }
 
-  // function hangdleAnswerTicket(e) {
-  //   e.preventDefault();
-  //     // preventDefault();
-  //   if (inputAnswerTicket !== "") {
-  //     dispatch(answerTicket(inputAnswerTicket));
-  //     console.log("success");
-  //   } else {
-  //   //   alert("fill the valid field!");
-  //     console.log("error");
-  //   }
-  // }
+  function hangdleAnswerTicket(e) {
+    e.preventDefault();
+    // preventDefault();
+    if (inputAnswerTicket !== "") {
+      dispatch(answerTicket(inputAnswerTicket));
+      console.log("success");
+    } else {
+      //   alert("fill the valid field!");
+      console.log("error");
+    }
+  }
 
   const ticket = useSelector((state) => state.tickets);
   //   console.log(ticket);
@@ -68,14 +68,14 @@ function UserProfile({ value }) {
   return (
     <section className="container">
       <div className="d-flex flex-column justify-content-around align-items-center col-12 ">
-        <div className="">
+        {/* <div className="">
           You are viewing the tickets that the admin and tech support have
           assigned.
-        </div>
+        </div> */}
         <div className="d-flex  justify-content-between align-items-center gap-4 my-3">
           <div className="text-start">User Profile</div>
           <div className="">
-            <button className="btn btn-info btn-sm">
+            <button className="btn btn-danger btn-sm">
               {" "}
               <Link to="/" className="text-dark">
                 Logout
@@ -92,7 +92,7 @@ function UserProfile({ value }) {
         </div>
       </div>
 
-      {/* <div className="text-center">
+      <div className="text-center">
         <span className="fw-bold py-2 text-center my-3">Create Ticket</span>
 
         <form action="" onSubmit={handleTicket} className="my-3">
@@ -104,7 +104,6 @@ function UserProfile({ value }) {
               value={inputTicket}
               onChange={setInput}
             />
-
             <button type="submit" className="btn btn-success p-2 my-3 my-md-0">
               Add Ticket
             </button>
@@ -114,7 +113,7 @@ function UserProfile({ value }) {
             ref={showStatus}
           ></div>
         </form>
-      </div> */}
+      </div>
       <div className="py-3 row row-cols-1 row-cols-md-2">
         {ticket.map((ticket) => {
           let tId = ticket.id;
@@ -123,7 +122,7 @@ function UserProfile({ value }) {
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Ticket</h5>
-                  <p className="card-text">{ticket.text}</p>
+                  <p className="card-text"> <b>Your Query :</b> {ticket.text}</p>
                   {ticket.answer !== "" ? (
                     <div className="">
                       <p>
@@ -131,7 +130,14 @@ function UserProfile({ value }) {
                       </p>
                     </div>
                   ) : (
-                    <div
+                    <div className="my-2">
+                      <b>
+                        The tech support will answer you Shortly!
+                      </b>
+                    </div>
+                  )}
+
+                    {/* <div
                       id={ticket.id}
                       style={{ display: "none" }}
                       className="py-2"
@@ -163,8 +169,7 @@ function UserProfile({ value }) {
                           Add
                         </button>
                       </form>
-                    </div>
-                  )}
+                    </div> */}
 
                   <div className="d-flex justify-content-start align-items- gap-2">
                     <div>
@@ -192,7 +197,7 @@ function UserProfile({ value }) {
                       </button>
                     </div>
 
-                    {ticket.answer ? (
+                    {/* {ticket.answer ? (
                       ""
                     ) : (
                       <div className="">
@@ -217,7 +222,7 @@ function UserProfile({ value }) {
                           Answer Ticket
                         </button>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>

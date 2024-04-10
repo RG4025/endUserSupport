@@ -10,18 +10,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4- After registration please login with the `same credentials` , note - The used api end user support is slow please check the device is connected with the `strong network`.\
 5- when trying to login if you feel the button is not working please `click on it more that 2-3 times`!\
 6- After login you'll be redirected to the user profile cross check Email and logout for the Session invalid.\
-7- User are have access to the tickets to  `resolve ticket`, `delete ticket` and Give the `answers` to the ticket.\
+7- User are have access to the tickets to  `create ticket`, `resolve ticket`, `delete ticket`.\
 8- Click to the `Answer Ticket` it will open the answer field and you can Submit your answer by filling the Answer input.\
 9- The ticket will be delated after clicking on `Delete Ticket` button.\
 10- Admin login Credentials - Admin Name - `admin`, Password - `pass123`\
-11- Use the above fields for admin login. Admin have access to `create the ticket`, `resolve ticket` and `delete ticket`.\
+11- Use the above fields for admin login. Admin have access to `Assign the ticket to tech support`, `resolve ticket` and `delete ticket`.\
 12- Admin don't have the access for answer the ticket.\
 13- Logout admin after Creating the ticket.\
 14- The user, admin and tech support are able to see the all tickets.\
 15- You'll find the tech support login in the below of tech support page,\
 16- Tech Support Credentials - name- `tech` and password - `tech123`.\
-17- Tech Support are able to `add tickets` to the user as well as `delete ticket` and `answer to the ticket`.\
-18 - Flow - First admin or tech support will assing/add ticket to the user after successfully login and user will Answer to the ticket assigned to them after there successfully registration and Login!
+17- Tech Support are able to `delete ticket` and `answer to the ticket`.\
+18 - Flow - First user  will add ticket to the query resolve after successfully login and tech support will Answer to the ticket assigned by admin  to them after there successfully registration and Login!
 
 ## Available Scripts
 

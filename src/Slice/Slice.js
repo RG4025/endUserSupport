@@ -7,7 +7,7 @@ const initialState = {
       text: "Please try adding another ticket as you are seeing the default one.",
       status: false,
       answer: "",
-      documents: [],
+      assignTicketByAdmin: false,
     },
   ],
 };
@@ -22,6 +22,7 @@ export const Slice = createSlice({
         text: action.payload,
         status: false,
         answer: "",
+        assignTicketByAdmin: false,
       };
       state.tickets.push(ticket);
     },
@@ -38,6 +39,15 @@ export const Slice = createSlice({
           return { ...ticket, status: true }; // Create a new ticket object with updated status
         } else {
           return ticket; // Keep existing ticket for other items
+        }
+      });
+    },
+    assignTicketByAdmin: (state, action) => {
+      state.tickets = state.tickets.map((ticket) => {
+        if (ticket.id === action.payload) {
+          return { ...ticket, assignTicketByAdmin: true };
+        } else {
+          return ticket;
         }
       });
     },
@@ -79,7 +89,7 @@ export const Slice = createSlice({
   },
 });
 
-export const { addTicket, removeTicket, updateStatus, answerTicket } =
+export const { addTicket, removeTicket, updateStatus, answerTicket,assignTicketByAdmin } =
   Slice.actions;
 
 export default Slice.reducer;
