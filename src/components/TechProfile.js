@@ -5,7 +5,7 @@ import {
   updateStatus,
   removeTicket,
   answerTicket,
-  assignTicketByAdmin
+  assignTicketByAdmin,
 } from "../Slice/Slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -105,7 +105,7 @@ function TechProfile() {
           {ticket.map((ticket) => {
             let tId = ticket.id;
 
-            if (ticket.assignTicketByAdmin === true) {
+            if (ticket.assignTicketByAdmin === true && ticket.answer === "") {
               return (
                 <div className=" py-3" key={ticket.id}>
                   <div className="card">
@@ -213,18 +213,13 @@ function TechProfile() {
                   </div>
                 </div>
               );
-            }else{
+            } else {
               // setIsTicHide(true);
             }
           })}
 
           <div>
-            <p>
-              {
-
-                isTicHide!==false && 'No ticket assighned!'
-              }
-            </p>
+            <p>{isTicHide !== false && "No ticket assighned!"}</p>
           </div>
         </div>
       </section>
@@ -232,7 +227,7 @@ function TechProfile() {
       <section>
         <div>
           <h4>
-            <b>Answered Ticket</b>
+            <b>Answered Ticket :</b>
           </h4>
         </div>
 
