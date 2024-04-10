@@ -15,13 +15,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 9- The ticket will be delated after clicking on `Delete Ticket` button.\
 10- Admin login Credentials - Admin Name - `admin`, Password - `pass123`\
 11- Use the above fields for admin login. Admin have access to `Assign the ticket to tech support`, `resolve ticket` and `delete ticket`.\
-12- Admin don't have the access for answer the ticket.\
+12- Admin don't have the access for answer the ticket\
 13- Logout admin after Creating the ticket.\
 14- The user, admin and tech support are able to see the all tickets.\
 15- You'll find the tech support login in the below of tech support page,\
-16- Tech Support Credentials - name- `tech` and password - `tech123`.\
-17- Tech Support are able to `delete ticket` and `answer to the ticket`.\
+16- tech support are able to Registration and Login with there individual credentials.\
+17- Tech Support are able to `resolve ticket` , `delete ticket` and `answer to the ticket`.\
+
 18 - Flow - First user  will add ticket to the query resolve after successfully login and tech support will Answer to the ticket assigned by admin  to them after there successfully registration and Login!
+And admin will choose perticular tech employee for the ticket.
 
 ## Available Scripts
 

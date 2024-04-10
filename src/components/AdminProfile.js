@@ -187,6 +187,7 @@ function AdminProfile() {
                                 console.log(e.target.value);
                               }}
                             >
+                              <option value="">Please select :</option>
                               {totalTech.map((tech) => {
                                 return (
                                   <option
@@ -199,7 +200,10 @@ function AdminProfile() {
                               })}
                             </select>
 
-                            <button type="submit btn btn-primary btn-sm my-2">
+                            <button
+                              type="submit"
+                              className="btn btn-primary btn-sm my-2"
+                            >
                               Assign
                             </button>
                           </form>
