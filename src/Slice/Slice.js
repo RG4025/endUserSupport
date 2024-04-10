@@ -7,7 +7,7 @@ const initialState = {
       text: "Please try adding another ticket as you are seeing the default one.",
       status: false,
       answer: "",
-      assignTicketByAdmin: false,
+      assignTicketByAdmin: "",
     },
   ],
 };
@@ -22,7 +22,7 @@ export const Slice = createSlice({
         text: action.payload,
         status: false,
         answer: "",
-        assignTicketByAdmin: false,
+        assignTicketByAdmin: "",
       };
       state.tickets.push(ticket);
     },
@@ -42,14 +42,29 @@ export const Slice = createSlice({
         }
       });
     },
+    
     assignTicketByAdmin: (state, action) => {
-      state.tickets = state.tickets.map((ticket) => {
-        if (ticket.id === action.payload) {
-          return { ...ticket, assignTicketByAdmin: true };
-        } else {
-          return ticket;
-        }
-      });
+      // state.tickets = state.tickets.map((ticket) => {
+      //   if (ticket.id === action.payload) {
+      //     return { ...ticket, assignTicketByAdmin: true };
+      //   } else {
+      //     return ticket;
+      //   }
+      // });
+
+      const ticketId = action.payload[0];
+      const assignTicket = action.payload[1];
+
+      const ticketIndex = state.tickets.findIndex(
+        (ticket) => ticket.id === ticketId
+      );
+
+      if (ticketIndex !== -1) {
+        state.tickets[ticketIndex] = {
+          ...state.tickets[ticketIndex],
+          assignTicketByAdmin: assignTicket,
+        };
+      }
     },
 
     answerTicket: (state, action) => {
@@ -89,7 +104,12 @@ export const Slice = createSlice({
   },
 });
 
-export const { addTicket, removeTicket, updateStatus, answerTicket,assignTicketByAdmin } =
-  Slice.actions;
+export const {
+  addTicket,
+  removeTicket,
+  updateStatus,
+  answerTicket,
+  assignTicketByAdmin,
+} = Slice.actions;
 
 export default Slice.reducer;

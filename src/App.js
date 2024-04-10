@@ -9,6 +9,7 @@ import AdminProfile from "./components/AdminProfile";
 import TechSupport from "./components/TechSupport";
 import TechProfile from "./components/TechProfile";
 import TechLogin from "./components/TechLogin";
+import TechRegister from "./components/TechRegister";
 import { Routes, Route, NavLink } from "react-router-dom";
 // import DocumentTest from "./components/DocumentTest";
 
@@ -81,9 +82,12 @@ function App() {
             <Route path="/TechSupport" element={<TechSupport />} />
             <Route path="/TechLogin" element={<TechLogin />} />
             <Route path="/TechProfile" element={<TechProfile />} />
+            <Route path="/TechRegister" element={<TechRegister />} />
             
           </Routes>
         </div>
+
+        {/* <TechRegister/> */}
 
       </section>
     </>

@@ -9,7 +9,7 @@ import {
 } from "../Slice/Slice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-function TechProfile() {
+function TechProfile({ value }) {
   const showStatus = useRef();
   const dispatch = useDispatch();
   const [inputTicket, setInputTicket] = useState("");
@@ -49,13 +49,14 @@ function TechProfile() {
   const ticket = useSelector((state) => state.tickets);
 
   const [isTicHide, setIsTicHide] = useState(false);
+
   return (
     <>
       <section className="container">
         <div className="d-flex justify-content-start gap-3 align-items-center col-12 col-md-6">
           <div className="">
             {" "}
-            <b>Welcome :</b> Tech Support
+            <b>Welcome :</b> {value.techName}
           </div>
           <div className="">
             <button className="btn btn-danger btn-sm">
@@ -105,7 +106,10 @@ function TechProfile() {
           {ticket.map((ticket) => {
             let tId = ticket.id;
 
-            if (ticket.assignTicketByAdmin === true && ticket.answer === "") {
+            if (
+              ticket.assignTicketByAdmin === value.techName &&
+              ticket.answer === ""
+            ) {
               return (
                 <div className=" py-3" key={ticket.id}>
                   <div className="card">
@@ -234,7 +238,7 @@ function TechProfile() {
         <div>
           <div className="py-3 row row-cols-1 row-cols-md-2">
             {ticket.map((tic) => {
-              if (tic.answer !== "") {
+              if (tic.answer !== "" && tic.assignTicketByAdmin === value.techName) {
                 return (
                   <>
                     <div className=" py-3" key={ticket.id}>
@@ -293,6 +297,6 @@ function TechProfile() {
       </section>
     </>
   );
-}
+};
 
 export default TechProfile;

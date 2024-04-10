@@ -8,16 +8,21 @@ import {
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { combineSlices } from "@reduxjs/toolkit";
 function AdminProfile() {
   const dispatch = useDispatch();
 
-  const showStatus = useRef();
   const ticket = useSelector((state) => state.tickets);
-  const [inputTicket, setInputTicket] = useState("");
 
-  function setInput(e) {
-    setInputTicket(e.target.value);
-  }
+  const [totalTech, setTotalTech] = useState([]);
+  const [selectTech, setSelectTech] = useState();
+
+  // const showStatus = useRef();
+  // const [inputTicket, setInputTicket] = useState("");
+  // function setInput(e) {
+  //   setInputTicket(e.target.value);
+  // }
 
   // function handleTicket(e) {
   //   e.preventDefault();
@@ -43,6 +48,17 @@ function AdminProfile() {
 
   //   setInputTicket("");
   // }
+
+  let url = `https://66163c78b8b8e32ffc7cc5e9.mockapi.io/tech/tech`;
+
+  axios
+    .get(url)
+    .then((res) => {
+      setTotalTech(res.data);
+    })
+    .catch((err) => {});
+
+  // console.log(totalTech);
 
   return (
     <>
@@ -96,19 +112,22 @@ function AdminProfile() {
                 <div className="card">
                   <div className="card-body p-3">
                     <h5 className="card-title">Ticket</h5>
-                    <p className="card-text"> <b>User Query : </b> {ticket.text}</p>
+                    <p className="card-text">
+                      {" "}
+                      <b>User Query : </b> {ticket.text}
+                    </p>
                     <p className="card-text">
                       {ticket.answer !== "" ? (
                         <p>
                           <b>Answer :</b> {ticket.answer}
                         </p>
-                      ) : ticket.assignTicketByAdmin !== false ? (
+                      ) : ticket.assignTicketByAdmin !== "" ? (
                         <b>The ticket are assigned wait for the answer!!</b>
                       ) : (
                         <b>Assign Ticket to the tech support!</b>
                       )}
                     </p>
-                    <div className="d-flex justify-content-start align-items- gap-2">
+                    <div className="d-flex justify-content-start align-items-center my-2 gap-2">
                       <div>
                         {ticket.status !== false ? (
                           <button className="btn btn-success btn-sm">
@@ -133,27 +152,59 @@ function AdminProfile() {
                           Delete Ticket
                         </button>
                       </div>
-                      <div className="">
-                        {ticket.assignTicketByAdmin !== false ? (
-                          <div>
-                            <button className="btn btn-success btn-sm">
-                              Assigned
-                            </button>
-                          </div>
-                        ) : (
-                          <div>
-                            <button
-                              className="btn btn-danger btn-sm p-1"
-                              title="Delete the title!"
-                              onClick={() =>
-                                dispatch(assignTicketByAdmin(ticket.id))
+                    </div>
+                    <div className="my-3">
+                      {ticket.assignTicketByAdmin !== "" ? (
+                        <div>
+                          <button className="btn btn-success btn-sm">
+                            Assigned to : <b> {ticket.assignTicketByAdmin}</b>
+                          </button>
+                        </div>
+                      ) : (
+                        <div>
+                          <span>
+                            <b> Select Support Below</b>
+                          </span>
+                          <form
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              if (selectTech !== "") {
+                                dispatch(
+                                  assignTicketByAdmin([ticket.id, selectTech])
+                                );
+                                console.log("success");
+                              } else {
+                                console.log("error");
                               }
+                            }}
+                          >
+                            <select
+                              name="tech"
+                              id=""
+                              className="form-control"
+                              onChange={(e) => {
+                                setSelectTech(e.target.value);
+                                console.log(e.target.value);
+                              }}
                             >
-                              Assign Ticket
+                              {totalTech.map((tech) => {
+                                return (
+                                  <option
+                                    className="form-control"
+                                    value={tech.techName}
+                                  >
+                                    {tech.techName}
+                                  </option>
+                                );
+                              })}
+                            </select>
+
+                            <button type="submit btn btn-primary btn-sm my-2">
+                              Assign
                             </button>
-                          </div>
-                        )}
-                      </div>
+                          </form>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

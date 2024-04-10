@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TechLogin from "./TechLogin";
+// import TechLogin from "./TechLogin";
+// import TechRegister from "./TechRegister";
+
 function TechSupport() {
   const tech = [
     {
@@ -66,9 +68,20 @@ function TechSupport() {
           </div>
         </div>
 
-        <div className="py-3 py-md-5">
+        <div className="py-3 py-md-5 d-flex justify-content-start align-items-center gap-4">
           <button className="btn btn-primary btn-md">
-            <Link className="text-light" to="/TechLogin">Login To Tech Support</Link>
+            <Link className="text-light text-decoration-none" to="/TechLogin">
+              Login To Tech Support
+            </Link>
+          </button>
+
+          <button className="btn btn-primary btn-md">
+            <Link
+              className="text-light text-decoration-none"
+              to="/TechRegister"
+            >
+              Register To Tech Support
+            </Link>
           </button>
         </div>
       </section>
