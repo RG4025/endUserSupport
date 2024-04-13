@@ -21,7 +21,6 @@ function TechLogin() {
 
   function handleTechLogin(e) {
     e.preventDefault();
-
     axios
       .get(url)
       .then((e) => {
@@ -34,13 +33,12 @@ function TechLogin() {
 
     {
       techData.map((res) => {
-        try {
-          if (tech === res.techName && pass === res.techPass) {
-            setIsTechLoggedin(true);
-            setTechDataChild(res);
-          }
-        } catch (error) {
-          // console.log(error);
+        if (tech === res.techName && pass === res.techPass) {
+          // console.log(tech, pass);
+          setIsTechLoggedin(true);
+          setTechDataChild(res);
+        } else {
+          alert("Please fill the valid credentials!");
         }
       });
     }
@@ -56,7 +54,7 @@ function TechLogin() {
           </div>
           <form onSubmit={handleTechLogin}>
             <div className="mb-3">
-              <label className="form-label  mx-auto">tech Field...</label>
+              <label className="form-label  mx-auto">tech Name...</label>
               <input
                 type="text"
                 className="form-control rounded-2"
@@ -75,11 +73,11 @@ function TechLogin() {
               />
             </div>
 
-            <div className="d-flex justi-content-between align-items-ceter">
+            <div className="d-flex justify-content-between align-items-ceter">
               <button type="submit" className="btn btn-primary w-full">
                 Login
               </button>
-              <NavLink to="/TechRegister">
+              <NavLink className="text-decoration-none" to="/TechRegister">
                 {" "}
                 Don't have account Register Here
               </NavLink>

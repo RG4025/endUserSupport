@@ -54,10 +54,10 @@ function Login() {
 
   return (
     <>
-      <div className="container text-start col-12 col-md-8   bg-dark text-light p-3 rounded rounded-2 my-4">
+      <div className="container text-start col-12  text-light p-3 rounded rounded-2 my-4">
         <form
           onSubmit={handleLogin}
-          className={isLoggedIn ? "d-none" : "d-block col-lg-6 mx-auto"}
+          className={isLoggedIn ? "d-none" : "d-block col-lg-6 mx-auto bg-dark p-4 rounded rounded-3"}
         >
           <div className="text-center">
             <h5 className="my-3">User Login</h5>

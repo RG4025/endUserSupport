@@ -66,56 +66,59 @@ function UserProfile({ value }) {
 
   return (
     <section className="container">
-      <div className="d-flex flex-column justify-content-around align-items-center col-12 ">
-        <div className="d-flex  justify-content-between align-items-center gap-4 my-3">
-          <div className="text-start">User Profile</div>
-          <div className="">
-            <button className="btn btn-danger btn-sm">
-              {" "}
-              <Link to="/" className="text-dark">
-                Logout
-              </Link>
-            </button>
+      <div className="bg-dark p-3 rounded rounded-5">
+        <div className=" col-12 ">
+          <div className="d-flex justify-content-around align-items-center">
+            <div className="my-4">
+              <div>
+                <p>Welcome : {value.Email !== null ? value.Email : ""}</p>
+              </div>
+            </div>
+            <div className="">
+              <button className="btn btn-danger btn-sm">
+                {" "}
+                <Link to="/" className="text-dark">
+                  Logout
+                </Link>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="my-4">
-        <div>
-          <p>Welcome : {value.Email !== null ? value.Email : ""}</p>
+        <div className="text-center">
+          <span className="fw-bold py-2 text-center my-3">Create Ticket</span>
+
+          <form action="" onSubmit={handleTicket} className="my-3 w-100">
+            <div className="d-sm-flex  flex-column justify-content-center align-items-center gap-3">
+              <input
+                type="text"
+                className="outline-none w-50 border-none p-2"
+                placeholder="Write the Ticket!"
+                value={inputTicket}
+                onChange={setInput}
+              />
+              <button
+                type="submit"
+                className="btn btn-success w-25 p-2 my-3 my-md-0"
+              >
+                Add Ticket
+              </button>
+            </div>
+            <div
+              className="py-0 my-4 border border-info border-2"
+              ref={showStatus}
+            ></div>
+          </form>
         </div>
-      </div>
-
-      <div className="text-center">
-        <span className="fw-bold py-2 text-center my-3">Create Ticket</span>
-
-        <form action="" onSubmit={handleTicket} className="my-3">
-          <div className="d-sm-flex justify-content-center align-items-center gap-3">
-            <input
-              type="text"
-              className="outline-none border-none p-2"
-              placeholder="Write the Ticket!"
-              value={inputTicket}
-              onChange={setInput}
-            />
-            <button type="submit" className="btn btn-success p-2 my-3 my-md-0">
-              Add Ticket
-            </button>
-          </div>
-          <div
-            className="py-0 my-4 border border-info border-2"
-            ref={showStatus}
-          ></div>
-        </form>
       </div>
       <div className="py-3 row row-cols-1 row-cols-md-2">
         {ticket.map((ticket) => {
           let tId = ticket.id;
           return (
             <div className=" py-3" key={ticket.id}>
-              <div className="card">
+              <div className="card border border-secondary border-2">
                 <div className="card-body">
-                  <h5 className="card-title">Ticket</h5>
+                  <h5 className="card-title border border-danger border-2 rounded-2 d-inline-block p-1">Ticket</h5>
                   <p className="card-text">
                     {" "}
                     <b>Your Query :</b> {ticket.text}

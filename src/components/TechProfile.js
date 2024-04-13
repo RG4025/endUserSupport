@@ -12,12 +12,11 @@ import { useSelector } from "react-redux";
 function TechProfile({ value }) {
   const dispatch = useDispatch();
   const [inputAnswerTicket, setanswerTicket] = useState("");
-  
-  
-  function setInput(e) {
-    setInputTicket(e.target.value);
-  }
-  
+
+  // function setInput(e) {
+  //   setInputTicket(e.target.value);
+  // }
+
   // const showStatus = useRef();
   // const [isAnswerOpen, setIsAnswerOpen] = useState(false);
   // const [inputTicket, setInputTicket] = useState("");
@@ -53,7 +52,7 @@ function TechProfile({ value }) {
   return (
     <>
       <section className="container">
-        <div className="d-flex justify-content-start gap-3 align-items-center col-12 col-md-6">
+        <div className="d-flex justify-content-around gap-3 align-items-center col-12 col-md-8 mx-auto bg-dark p-2 rounded rounded-3 text-light">
           <div className="">
             {" "}
             <b>Welcome :</b> {value.techName}
@@ -61,7 +60,7 @@ function TechProfile({ value }) {
           <div className="">
             <button className="btn btn-danger btn-sm">
               {" "}
-              <Link to="/" className="text-light list-unstyled">
+              <Link to="/" className="text-light text-decoration-none list-unstyled">
                 Logout
               </Link>
             </button>
@@ -69,10 +68,11 @@ function TechProfile({ value }) {
           {/* <span>{value.Email !== null ? "i did it" : ""}</span> */}
         </div>
 
-        <div className="my-4">
-          <h4>
+        <div className="my-4 col-12 col-md-6">
+          <h5>
+            <small className="d-block">You'll be see_</small>
             <b>Assigned Ticket from Admin:</b>
-          </h4>
+          </h5>
         </div>
 
         {/* <div className="text-center">
@@ -112,7 +112,7 @@ function TechProfile({ value }) {
             ) {
               return (
                 <div className=" py-3" key={ticket.id}>
-                  <div className="card">
+                  <div className="card border border-secondary border-2">
                     <div className="card-body">
                       <h5 className="card-title">Ticket</h5>
                       <p className="card-text">{ticket.text}</p>
@@ -222,23 +222,29 @@ function TechProfile({ value }) {
             }
           })}
 
-          <div>
+          <div className="d-none">
             <p>{isTicHide !== false && "No ticket assighned!"}</p>
           </div>
         </div>
       </section>
 
+      <div className="border border-2 border-info my-3"></div>
+
       <section>
         <div>
-          <h4>
+          <h5>
+            <small className="d-block">You'll be see_</small>
             <b>Answered Ticket :</b>
-          </h4>
+          </h5>
         </div>
 
         <div>
           <div className="py-3 row row-cols-1 row-cols-md-2">
             {ticket.map((tic) => {
-              if (tic.answer !== "" && tic.assignTicketByAdmin === value.techName) {
+              if (
+                tic.answer !== "" &&
+                tic.assignTicketByAdmin === value.techName
+              ) {
                 return (
                   <>
                     <div className=" py-3" key={ticket.id}>
@@ -297,6 +303,6 @@ function TechProfile({ value }) {
       </section>
     </>
   );
-};
+}
 
 export default TechProfile;

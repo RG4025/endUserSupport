@@ -34,7 +34,7 @@ function TechSupport() {
   return (
     <>
       <section className="container">
-        <div className="py-3 py-md-5 d-flex justify-content-start align-items-center gap-4">
+        <div className="py-3 py-md-5 d-flex justify-content-center align-items-center gap-4 mx-auto">
           <button className="btn btn-primary btn-md">
             <Link className="text-light text-decoration-none" to="/TechLogin">
               Login To Tech Support
@@ -52,12 +52,12 @@ function TechSupport() {
         </div>
 
         <div className="">
-          <div className="row row-cols-1 row-cols-md-2">
+          <div className="d-flex flex-column  justify-content-start">
             {tech.map((res) => {
               return (
                 <div
                   key={res.id}
-                  className="container col my-3 d-flex justify-content-center align-items-center"
+                  className=" col my-3 d-flex justify-content-center align-items-center"
                 >
                   <div className="bg-dark p-3 rounded rounded-2 text-light">
                     <p>{res.name}</p>

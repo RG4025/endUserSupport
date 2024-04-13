@@ -62,18 +62,35 @@ function AdminProfile() {
 
   return (
     <>
-      <div className="d-flex justify-content-end align-items-center gap-3 my-3">
-        <span className="text-dark">
-          Welcome : <b>admin</b>{" "}
-        </span>
-        <span>
-          <button className="btn btn-danger btn-sm">
-            {" "}
-            <Link to="/" className="text-decoration-none text-light">
-              Logout
-            </Link>
-          </button>
-        </span>
+      <div className=" bg-dark p-2 rounded rounded-2 gap-3 my-3 col-12 col-md-8 mx-auto">
+        <div className="d-flex justify-content-around  align-items-center">
+          <span className="text-light">
+            Welcome : <b>admin</b>{" "}
+          </span>
+          <span>
+            <button className="btn btn-danger btn-sm">
+              {" "}
+              <Link to="/" className="text-decoration-none text-light">
+                Logout
+              </Link>
+            </button>
+          </span>
+        </div>
+        <div className="text-light p-2">
+          <p>
+            <strong>Note :</strong>{" "}
+          </p>
+          <ul>
+            <li>
+              Please try to assign tickets to the tech support, Find the right
+              tech support using selection field for the ticket which one to
+              assign!
+            </li>
+            <li>
+              You have rights to Delete And Resolve ticket.
+            </li>
+          </ul>
+        </div>
       </div>
       <section className="container">
         {/* <div className="text-center">
@@ -105,11 +122,11 @@ function AdminProfile() {
             ></div>
           </form>
         </div> */}
-        <div className="py-3 text-start mx-auto row row-cols-1 row-cols-md-2 col-12 col-md-8">
+        <div className="py-3 text-start mx-auto row row-cols-1 row-cols-lg-2">
           {ticket.map((ticket) => {
             return (
-              <div className=" p-3" key={ticket.id}>
-                <div className="card">
+              <div className="container col p-3" key={ticket.id}>
+                <div className="card border border-secondary border-2">
                   <div className="card-body p-3">
                     <h5 className="card-title">Ticket</h5>
                     <p className="card-text">
