@@ -8,8 +8,8 @@ const setUserDetails = createContext();
 function Login() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [userData, setUserData] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,16 +38,31 @@ function Login() {
         alert("Fill the valid details");
       });
 
-    userData.map((res) => {
-      if (res.Email === email && res.Password === password) {
-        // console.log(res);
-        // console.log(res.id);
-        setIsLoggedIn(true);
-        // setUserDetails = res;
-        setChildData(res);
-      } else {
+    let user = userData.find((e) => {
+      if (e.Email === email && e.Password === password) {
+        return true;
       }
     });
+
+    console.log(user);
+
+    if (user !== undefined) {
+      setIsLoggedIn(true);
+      setChildData(user);
+    } else {
+      setIsLoggedIn(false);
+      setChildData([]);
+      alert("fill the valid credentials!");
+    }
+
+    // userData.map((res) => {
+    //   if (res.Email === email && res.Password === password) {
+    //     // console.log(res);
+    //     // console.log(res.id);
+    //     // setUserDetails = res;
+    //   } else {
+    //   }
+    // });
   }
 
   useEffect(() => {}, [userData, childData, isLoggedIn]);
@@ -56,8 +71,12 @@ function Login() {
     <>
       <div className="container text-start col-12  text-light p-3 rounded rounded-2 my-4">
         <form
-          onSubmit={handleLogin}
-          className={isLoggedIn ? "d-none" : "d-block col-lg-6 mx-auto bg-dark p-4 rounded rounded-3"}
+          // onSubmit={handleLogin}
+          className={
+            isLoggedIn
+              ? "d-none"
+              : "d-block col-lg-6 mx-auto bg-dark p-4 rounded rounded-3"
+          }
         >
           <div className="text-center">
             <h5 className="my-3">User Login</h5>
@@ -85,7 +104,12 @@ function Login() {
           </div>
 
           <div className="d-flex justify-content-between align-items-center">
-            <button type="submit" className="btn btn-primary w-full">
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+              onClick={handleLogin}
+              disabled={isLoggedIn !== false ? true : false}
+            >
               Submit
             </button>
             <NavLink to="/Signup">Register Here</NavLink>

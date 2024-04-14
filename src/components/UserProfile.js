@@ -65,7 +65,7 @@ function UserProfile({ value }) {
   //   console.log(ticket);
 
   return (
-    <section className="container">
+    <section className="">
       <div className="bg-dark p-3 rounded rounded-5">
         <div className=" col-12 ">
           <div className="d-flex justify-content-around align-items-center">
@@ -77,7 +77,7 @@ function UserProfile({ value }) {
             <div className="">
               <button className="btn btn-danger btn-sm">
                 {" "}
-                <Link to="/" className="text-dark">
+                <Link to="/" className="text-light text-decoration-none " >
                   Logout
                 </Link>
               </button>
@@ -89,17 +89,17 @@ function UserProfile({ value }) {
           <span className="fw-bold py-2 text-center my-3">Create Ticket</span>
 
           <form action="" onSubmit={handleTicket} className="my-3 w-100">
-            <div className="d-sm-flex  flex-column justify-content-center align-items-center gap-3">
+            <div className="d-flex  flex-column justify-content-center align-items-center gap-3">
               <input
                 type="text"
-                className="outline-none w-50 border-none p-2"
+                className="outline-none w-100 border-none p-2"
                 placeholder="Write the Ticket!"
                 value={inputTicket}
                 onChange={setInput}
               />
               <button
                 type="submit"
-                className="btn btn-success w-25 p-2 my-3 my-md-0"
+                className="btn btn-success w-50 p-2 my-3 my-md-0"
               >
                 Add Ticket
               </button>

@@ -6,6 +6,7 @@ import axios from "axios";
 function TechLogin() {
   const [techData, setTechData] = useState([]);
   const [istechLoggedin, setIsTechLoggedin] = useState(false);
+  const [isUserPresent, setIsUserPresent] = useState(false);
   const [techDataChild, setTechDataChild] = useState({});
   const [tech, setName] = useState("");
   const [pass, setPass] = useState("");
@@ -31,19 +32,36 @@ function TechLogin() {
         alert("Fill the valid details");
       });
 
-    {
-      techData.map((res) => {
-        if (tech === res.techName && pass === res.techPass) {
-          // console.log(tech, pass);
-          setIsTechLoggedin(true);
-          setTechDataChild(res);
-        } else {
-          alert("Please fill the valid credentials!");
-        }
-      });
+    let a = techData.find((e) => {
+      if (e.techName === tech && e.techPass === pass) {
+        return true;
+      }
+    });
+
+    console.log(a);
+
+    if (a !== undefined) {
+      setIsTechLoggedin(true);
+      setTechDataChild(a);
+    } else {
+      alert("Please fill the valid credentials!");
     }
+
+    // {
+    //   techData.map((res) => {
+    //     if (tech === res.techName && pass === res.techPass) {
+    //       // console.log(tech, pass);
+    //       setIsUserPresent(true);
+    //     } else {
+    //       alert("Please fill the valid credentials!");
+    //     }
+    //   });
+    // }
+
+    // if (isUserPresent) {
+    // }
   }
-  useEffect(() => {}, [techData, techDataChild, istechLoggedin]);
+  useEffect(() => {}, [techData, techDataChild, istechLoggedin, isUserPresent]);
 
   return (
     <>
