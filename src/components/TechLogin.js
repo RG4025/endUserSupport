@@ -32,6 +32,18 @@ function TechLogin() {
         alert("Fill the valid details");
       });
 
+    let techOne = techData.find((e) => {
+      if (e.techName === tech && e.techPass === pass) {
+        return true;
+      }
+    });
+
+    if (techOne === undefined) {
+      alert("Logging in! OR you must filled the whrong credentials!!.");
+    }
+  }
+  
+  useEffect(() => {
     let a = techData.find((e) => {
       if (e.techName === tech && e.techPass === pass) {
         return true;
@@ -44,24 +56,10 @@ function TechLogin() {
       setIsTechLoggedin(true);
       setTechDataChild(a);
     } else {
-      alert("Please fill the valid credentials!");
+      setIsTechLoggedin(false);
+      // alert("Please fill the valid credentials!");
     }
-
-    // {
-    //   techData.map((res) => {
-    //     if (tech === res.techName && pass === res.techPass) {
-    //       // console.log(tech, pass);
-    //       setIsUserPresent(true);
-    //     } else {
-    //       alert("Please fill the valid credentials!");
-    //     }
-    //   });
-    // }
-
-    // if (isUserPresent) {
-    // }
-  }
-  useEffect(() => {}, [techData, techDataChild, istechLoggedin, isUserPresent]);
+  }, [techData, techDataChild, istechLoggedin, isUserPresent]);
 
   return (
     <>

@@ -13,6 +13,7 @@ function Login() {
 
   const [userData, setUserData] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userLoop, setUserLoop] = useState(true);
   const [childData, setChildData] = useState({});
   function getEmail(e) {
     setEmail(e.target.value);
@@ -26,7 +27,6 @@ function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
-
     axios
       .get(url)
       .then((e) => {
@@ -38,34 +38,38 @@ function Login() {
         alert("Fill the valid details");
       });
 
+    let userLoopAlert = userData.find((res) => {
+      if (res.Email === email && res.Password === password) {
+        setUserLoop(false);
+        return true;
+      }
+    });
+
+    if (userLoopAlert === undefined && userLoop === true) {
+      alert("Logging in! OR you must filled the whrong credentials!!.");
+    }
+  }
+
+  useEffect(() => {
     let user = userData.find((e) => {
       if (e.Email === email && e.Password === password) {
         return true;
       }
     });
 
-    console.log(user);
+    // console.log(user);
 
     if (user !== undefined) {
       setIsLoggedIn(true);
       setChildData(user);
     } else {
-      setIsLoggedIn(false);
-      setChildData([]);
-      alert("fill the valid credentials!");
+      setTimeout(() => {
+        setIsLoggedIn(false);
+        setChildData([]);
+      }, 2000);
+      // alert("User not found!");
     }
-
-    // userData.map((res) => {
-    //   if (res.Email === email && res.Password === password) {
-    //     // console.log(res);
-    //     // console.log(res.id);
-    //     // setUserDetails = res;
-    //   } else {
-    //   }
-    // });
-  }
-
-  useEffect(() => {}, [userData, childData, isLoggedIn]);
+  }, [userData, childData, isLoggedIn]);
 
   return (
     <>
