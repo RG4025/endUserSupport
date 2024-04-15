@@ -4,6 +4,7 @@ const initialState = {
   tickets: [
     {
       id: nanoid(),
+      userId: 0,
       text: "Please try adding another ticket as you are seeing the default one.",
       status: false,
       answer: "",
@@ -17,9 +18,14 @@ export const Slice = createSlice({
   initialState,
   reducers: {
     addTicket: (state, action) => {
+      let userIdFetched = action.payload[0];
+      let userText = action.payload[1];
+      console.log(userIdFetched, userText);
+
       const ticket = {
         id: nanoid(),
-        text: action.payload,
+        userId: userIdFetched,
+        text: userText,
         status: false,
         answer: "",
         assignTicketByAdmin: "",

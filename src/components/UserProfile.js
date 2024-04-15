@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 function UserProfile({ value }) {
   //   const getUserDetails = useContext(setUserDetails);
-  //   console.log(value);
+  // console.log(value);
 
   const showStatus = useRef();
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function UserProfile({ value }) {
     e.preventDefault();
 
     if (inputTicket !== "") {
-      dispatch(addTicket(inputTicket));
+      dispatch(addTicket([value.id, inputTicket]));
       //   alert("Success!");
       (function main() {
         showStatus.current.textContent = "Ticket Added Successfully!";
@@ -56,13 +56,17 @@ function UserProfile({ value }) {
       dispatch(answerTicket(inputAnswerTicket));
       console.log("success");
     } else {
-      //   alert("fill the valid field!");
+      
+    // alert("fill the valid field!");
       console.log("error");
     }
   }
 
-  const ticket = useSelector((state) => state.tickets);
-  //   console.log(ticket);
+  const filteredTickets = useSelector((state) => state.tickets);
+  // console.log(ticket);
+
+  const ticket = filteredTickets.filter((tic) => tic.userId === value.id);
+  // console.log(ticket);
 
   return (
     <section className="">
@@ -77,7 +81,7 @@ function UserProfile({ value }) {
             <div className="">
               <button className="btn btn-danger btn-sm">
                 {" "}
-                <Link to="/" className="text-light text-decoration-none " >
+                <Link to="/" className="text-light text-decoration-none ">
                   Logout
                 </Link>
               </button>
@@ -118,7 +122,9 @@ function UserProfile({ value }) {
             <div className=" py-3" key={ticket.id}>
               <div className="card border border-secondary border-2">
                 <div className="card-body">
-                  <h5 className="card-title border border-danger border-2 rounded-2 d-inline-block p-1">Ticket</h5>
+                  <h5 className="card-title border border-danger border-2 rounded-2 d-inline-block p-1">
+                    Ticket
+                  </h5>
                   <p className="card-text">
                     {" "}
                     <b>Your Query :</b> {ticket.text}
