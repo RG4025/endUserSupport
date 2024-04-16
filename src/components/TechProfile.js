@@ -60,7 +60,10 @@ function TechProfile({ value }) {
           <div className="">
             <button className="btn btn-danger btn-sm">
               {" "}
-              <Link to="/" className="text-light text-decoration-none list-unstyled">
+              <Link
+                to="/"
+                className="text-light text-decoration-none list-unstyled"
+              >
                 Logout
               </Link>
             </button>
@@ -114,7 +117,9 @@ function TechProfile({ value }) {
                 <div className=" py-3" key={ticket.id}>
                   <div className="card border border-secondary border-2">
                     <div className="card-body">
-                      <h5 className="card-title">Ticket</h5>
+                      <h5 className="card-title border border-danger border-2 rounded-2 d-inline-block p-1">
+                        Ticket
+                      </h5>
                       <p className="card-text">{ticket.text}</p>
                       {ticket.answer !== "" ? (
                         <div className="">
