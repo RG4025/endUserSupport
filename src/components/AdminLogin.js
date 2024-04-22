@@ -35,9 +35,7 @@ function AdminLogin() {
         </div>
         <form onSubmit={handleAdminLogin}>
           <div className="mb-3">
-            <label className="form-label  mx-auto">
-              Admin Name...
-            </label>
+            <label className="form-label  mx-auto">Admin Name...</label>
             <input
               type="text"
               className="form-control rounded-2"
@@ -61,6 +59,13 @@ function AdminLogin() {
           </button>
           {/* <Link to="/AdminProfile">Login</Link> */}
         </form>
+
+        <div className="py-3">
+          Admin Credentials :{" "}
+          <p>
+            Name : <b>admin</b> <br /> Pass : <b>pass123</b>
+          </p>
+        </div>
       </div>
     </>
   );

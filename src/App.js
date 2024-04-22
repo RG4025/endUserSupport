@@ -69,8 +69,7 @@ function App() {
               </ul>
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center gap-0 mx-0 mx-sm-4">
-              <strong>Noitavonne</strong>
-              <small>User Support</small>
+              <strong>End User Support</strong>
             </div>
           </div>
         </nav>

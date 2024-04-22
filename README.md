@@ -2,7 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
 ## Steps/Instructions
 1- First find the node-modules in the project if you don't find it install the package using `npm i`\
 2- You'll get the links to `Register User`, `Login`, `Admin Login`, `Home`\
